@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000;
 
 //1. client side call-------------------
 app.use(cors())
-//2. get data (midel wire)
+//2. get data (cors middleware)
 app.use(express.json());
 
 
@@ -28,6 +28,11 @@ const users = [
     { id: 6, name: 'sabila', email: 'sabila@gmail.com', phone: '01788888888' },
     { id: 7, name: 'sohana', email: 'sohana@gmail.com', phone: '01788888888' },
 ]
+
+// app.get('/users', (req,res)=> {
+//     res.send(users);
+// })
+
 
 // get full api data---
 app.get('/users', (req, res) => {
@@ -75,7 +80,7 @@ app.post('/user', (req, res) => {
     //set all user value bu users
     users.push(user);
     res.send(user)
-})
+});
 
 
 
@@ -86,9 +91,9 @@ app.get('/fruits', (req, res) => {
 
 app.get('/fruits/mango/fazle', (req, res) => {
     res.send('sour sour fazle flavor');
-})
+});
 
 
 app.listen(port, () => {
     console.log('Listening to Port is ', port)
-})
+});
